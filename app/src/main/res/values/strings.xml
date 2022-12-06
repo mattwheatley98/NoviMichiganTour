@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Novi Michigan Tour</string>
+
+    //Categories
     <string name="parks">Parks</string>
     <string name="shopping">Shopping</string>
     <string name="restaurants">Restaurants</string>
@@ -8,4 +10,74 @@
     <string name="detroit">Detroit</string>
     <string name="ann_arbor">Ann Arbor</string>
     <string name="michigan_vacations">Michigan Vacations</string>
+
+    //Parks
+    <string name="ella_mae_power_park">Ella Mae Power Park</string>
+    <string name="wildlife_woods_park">Wildlife Woods Park</string>
+    <string name="fuerst_park">Fuerst Park</string>
+    <string name="rotary_park">Rotary Park</string>
+    <string name="bosco_fields">Bosco Fields</string>
+    <string name="itc_trail">ITC Trail</string>
+
+    //Shopping
+    <string name="twelve_oaks_mall">Twelve Oaks Mall</string>
+    <string name="west_oaks_shopping_center">West Oaks Shopping Center</string>
+    <string name="west_market_square_shopping_center">West Market Square</string>
+    <string name="novi_town_center">Novi Town Center</string>
+    <string name="twelve_mile_crossing">Twelve Mile Crossing</string>
+    <string name="one_world_market">One World Market</string>
+
+    //Restaurants
+    <string name="kura_sushi">Kura Sushi</string>
+    <string name="sedona_taphouse">Sedona Taphouse</string>
+    <string name="fumi">Fumi</string>
+    <string name="the_breakfast_club">The Breakfast Club</string>
+    <string name="o_sushi">O\'Sushi</string>
+    <string name="chopped_olive">Chopped Olive</string>
+    <string name="nagomi_japanese_restaurant">Nagomi Japanese Restaurant</string>
+
+    //Things To Do... EVENTS, MAYBE?
+    <string name="michigan_state_fair">Michigan State Fair</string>
+    <string name="japanese_festival">Japanese Festival?</string> // maybe?
+    <string name="diwali_festival">Diwali Festival?</string> //maybe?
+    <string name="novi_athletic_cluc">Novi Athletic Club</string>
+    <string name="sparc_arena">Sparc Arena</string>
+    <string name="links_of_novi">Links of Novi</string>
+
+    //Nearby Attractions
+    <string name="downtown_northville">Downtown Northville</string>
+    <string name="maybury_park">Maybury Park</string>
+    <string name="hines_park">Hines Park</string>
+    <string name="kensington_metro_park">Kensington Metro Park</string>
+    <string name="downtown_plymouth">Downtown Plymouth</string>
+    <string name="downtown_brighton">Downtown Brighton</string>
+    <string name="somerset_collection">Somerset Collection</string>
+
+    //Detroit
+    <string name="belle_isle_park">Belle Isle Park</string>
+    <string name="detroit_institute_of_arts">Detroit Institute of Arts</string>
+    <string name="detroit_riverfront">Detroit Riverfront</string>
+    <string name="motown_museum">Motown Museum</string>
+    <string name="the_guardian_building">The Guardian Building</string>
+    <string name="eastern_market">Eastern Market</string>
+
+
+
+    //Ann Arbor
+    <string name="ann_arbor_hands_on_museum">Ann Arbor Hands-On Museum</string>
+    <string name="university_of_michigan">University of Michigan</string>
+    <string name="michigan_theater">Michigan Theater</string>
+    <string name="main_street">Main Street</string>
+    <string name="kerrytown">Kerrytown</string>
+    <string name="hudson_mills_metropark">Hudon Mills Matropark</string>
+
+
+    //Michigan Vacations
+    <string name="mackinac_island">Mackninac Island</string>
+    <string name="holland">Holland</string>
+    <string name="traverse_city">Traverse City</string>
+    <string name="munising">Munising</string>
+    <string name="marquette">Marquette</string>
+    <string name="isle_royale_national_park">Isle Royale National Park</string>
+
 </resources>
