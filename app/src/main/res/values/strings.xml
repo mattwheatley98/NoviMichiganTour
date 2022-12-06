@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Novi Michigan Tour</string>
+    <string name="parks">Parks</string>
+    <string name="shopping">Shopping</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="things_to_do">Things To Do</string>
+    <string name="nearby_attractions">Nearby Attractions</string>
+    <string name="detroit">Detroit</string>
+    <string name="ann_arbor">Ann Arbor</string>
+    <string name="michigan_vacations">Michigan Vacations</string>
+</resources>
