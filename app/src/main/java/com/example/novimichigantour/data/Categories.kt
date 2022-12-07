@@ -14,7 +14,7 @@ object Categories {
             R.string.shopping
         ),
         Entry(
-            R.drawable.restaurants,
+            R.drawable.restaurants_big,
             R.string.restaurants
         ),
         Entry(
