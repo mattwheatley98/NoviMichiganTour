@@ -20,9 +20,19 @@ val Montserrat = FontFamily(
 val Typography = Typography(
 
     body1 = TextStyle(
-            fontFamily = Sriracha,
-            fontWeight = FontWeight.Normal,
-            fontSize = 25.sp
-        ),
-
+        fontFamily = Sriracha,
+        fontWeight = FontWeight.Normal,
+        fontSize = 25.sp
+    ),
+    h1 = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 30.sp
+    ),
+    caption = TextStyle(
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 20.sp
     )
+
+)

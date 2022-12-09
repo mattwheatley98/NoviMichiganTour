@@ -22,34 +22,28 @@ fun BaseScreen(
     collection: List<Entry>,
     onCardClicked: () -> Unit = {}
 ) {
-    EntryLazyColumn(collection = collection, onCardClicked)
-}
 
-@Composable
-fun EntryLazyColumn(
-    collection: List<Entry>,
-    onCardClicked: () -> Unit
-) {
     LazyColumn(
         modifier = Modifier,
-
-        ) {
+    ) {
         items(collection) {
             EntryRow(entry = it, onCardClicked)
         }
     }
 }
 
+var route = ""
+
 @Composable
 fun EntryRow(
     entry: Entry,
-    onCardClicked: () -> Unit,
+    onCardClicked: () -> Unit
 ) {
     Card(
         elevation = 4.dp,
         modifier = Modifier
             .padding(8.dp)
-            .clickable { onCardClicked() }) {
+            .clickable { route = entry.entryRoute; onCardClicked()  }) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -71,7 +65,6 @@ fun EntryRow(
                     modifier = Modifier
                 )
             }
-
         }
     }
 }

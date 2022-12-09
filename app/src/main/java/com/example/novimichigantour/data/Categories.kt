@@ -6,37 +6,45 @@ import com.example.novimichigantour.model.Entry
 object Categories {
     val categoryData = listOf<Entry>(
         Entry(
+            "Parks",
             R.drawable.parks,
             R.string.parks
         ),
         Entry(
+            "Shopping",
             R.drawable.shopping,
             R.string.shopping
         ),
         Entry(
+            "Restaurants",
             R.drawable.restaurants_big,
             R.string.restaurants
         ),
         Entry(
+            "ThingsToDo",
             R.drawable.things_to_do,
             R.string.things_to_do
         ),
         Entry(
+            "NearbyAttractions",
             R.drawable.nearby_attractions,
             R.string.nearby_attractions
         ),
-
         Entry(
+            "Detroit",
             R.drawable.detroit,
             R.string.detroit
         ),
         Entry(
+            "AnnArbor",
             R.drawable.ann_arbor,
             R.string.ann_arbor
         ),
         Entry(
+            "MichiganVacations",
             R.drawable.michigan_vacations,
             R.string.michigan_vacations
+
         )
     )
 }

@@ -1,148 +1,174 @@
 package com.example.novimichigantour.data
 
-import androidx.compose.ui.res.stringResource
 import com.example.novimichigantour.R
 import com.example.novimichigantour.model.Entry
 
 object Recommendations {
     val recommendationsParks = listOf<Entry>(
         Entry(
-            R.drawable.itc_corridor_trail,
-            R.string.itc_corridor_trail
+            "BoscoFields",
+            R.drawable.bosco_fields,
+            R.string.bosco_fields
         ),
         Entry(
-            R.drawable.wildlife_woods_park,
-            R.string.wildlife_woods_park
-        ),
-        Entry(
+            "FuerstPark",
             R.drawable.fuerst_park,
             R.string.fuerst_park
         ),
         Entry(
+            "ItcCorridorTrail",
+            R.drawable.itc_corridor_trail,
+            R.string.itc_corridor_trail,
+        ),
+        Entry(
+            "PavilionShorePark",
             R.drawable.pavilion_shore_park,
             R.string.pavilion_shore_park
         ),
         Entry(
+            "RotaryPark",
             R.drawable.rotary_park,
             R.string.rotary_park
         ),
         Entry(
-            R.drawable.bosco_fields,
-            R.string.bosco_fields
+            "WildlifeWoodsPark",
+            R.drawable.wildlife_woods_park,
+            R.string.wildlife_woods_park
         )
     )
 
     val recommendationsShopping = listOf<Entry>(
         Entry(
-            R.drawable.twelve_oaks_mall,
-            R.string.twelve_oaks_mall
-        ),
-        Entry(
-            R.drawable.west_oaks_shopping_center,
-            R.string.west_oaks_shopping_center
-        ),
-        Entry(
-            R.drawable.west_market_square_shopping_center,
-            R.string.west_market_square_shopping_center
-        ),
-        Entry(
+            "NoviTownCenter",
             R.drawable.novi_town_center,
             R.string.novi_town_center
         ),
         Entry(
+            "OneWorldMarket",
+            R.drawable.one_world_market,
+            R.string.one_world_market
+        ),
+        Entry(
+            "TwelveMileCrossing",
             R.drawable.twelve_mile_crossing,
             R.string.twelve_mile_crossing
         ),
         Entry(
-            R.drawable.one_world_market,
-            R.string.one_world_market
+            "TwelveOaksMall",
+            R.drawable.twelve_oaks_mall,
+            R.string.twelve_oaks_mall
+        ),
+        Entry(
+            "WestMarketSquare",
+            R.drawable.west_market_square_shopping_center,
+            R.string.west_market_square
+        ),
+        Entry(
+            "WestOaksShoppingCenter",
+            R.drawable.west_oaks_shopping_center,
+            R.string.west_oaks_shopping_center
         )
     )
 
     val recommendationsRestaurants = listOf<Entry>(
         Entry(
-            R.drawable.kura_sushi,
-            R.string.kura_sushi
-        ),
-        Entry(
-            R.drawable.sedona_taphouse,
-            R.string.sedona_taphouse
-        ),
-        Entry(
-            R.drawable.fumi,
-            R.string.fumi
-        ),
-        Entry(
-            R.drawable.the_breakfast_club,
-            R.string.the_breakfast_club
-        ),
-        Entry(
-            R.drawable.o_sushi,
-            R.string.o_sushi
-        ),
-        Entry(
+            "ChoppedOlive",
             R.drawable.chopped_olive,
             R.string.chopped_olive
         ),
         Entry(
+            "Fumi",
+            R.drawable.fumi,
+            R.string.fumi
+        ),
+        Entry(
+            "KuraSushi",
+            R.drawable.kura_sushi,
+            R.string.kura_sushi
+        ),
+        Entry(
+            "NagomiJapaneseRestaurant",
             R.drawable.nagomi_japanese_restaurant,
             R.string.nagomi_japanese_restaurant
+        ),
+        Entry(
+            "OSushi",
+            R.drawable.o_sushi,
+            R.string.o_sushi
+        ),
+        Entry(
+            "SedonaTaphouse",
+            R.drawable.sedona_taphouse,
+            R.string.sedona_taphouse
+        ),
+        Entry(
+            "TheBreakfastClub",
+            R.drawable.the_breakfast_club,
+            R.string.the_breakfast_club
         )
     )
 
     val recommendationsThingsToDo = listOf<Entry>(
         Entry(
-            R.drawable.michigan_state_fair,
-            R.string.michigan_state_fair
-        ),
-        Entry(
+            "JapaneseFestival",
             R.drawable.japanese_festival,
             R.string.japanese_festival
         ),
         Entry(
-            R.drawable.diwali_festival,
-            R.string.diwali_festival
+            "LinksOfNovi",
+            R.drawable.links_of_novi,
+            R.string.links_of_novi
         ),
         Entry(
+            "MichiganStateFair",
+            R.drawable.michigan_state_fair,
+            R.string.michigan_state_fair
+        ),
+        Entry(
+            "NoviAthleticClub",
             R.drawable.novi_athletic_club,
             R.string.novi_athletic_club //TYPO
         ),
         Entry(
+            "SparcArena",
             R.drawable.sparc_arena,
             R.string.sparc_arena
-        ),
-        Entry(
-            R.drawable.links_of_novi,
-            R.string.links_of_novi
         )
     )
 
     val recommendationsNearbyAttractions = listOf<Entry>(
         Entry(
-            R.drawable.downtown_northville,
-            R.string.downtown_northville
-        ),
-        Entry(
-            R.drawable.maybury_park,
-            R.string.maybury_park
-        ),
-        Entry(
-            R.drawable.hines_park,
-            R.string.hines_park
-        ),
-        Entry(
-            R.drawable.kensington_metro_park,
-            R.string.kensington_metro_park
-        ),
-        Entry(
-            R.drawable.downtown_plymouth,
-            R.string.downtown_plymouth
-        ),
-        Entry(
+            "DowntownBrighton",
             R.drawable.downtown_brighton,
             R.string.downtown_brighton
         ),
         Entry(
+            "DowntownNorthville",
+            R.drawable.downtown_northville,
+            R.string.downtown_northville
+        ),
+        Entry(
+            "DowntownPlymouth",
+            R.drawable.downtown_plymouth,
+            R.string.downtown_plymouth
+        ),
+        Entry(
+            "HinesPark",
+            R.drawable.hines_park,
+            R.string.hines_park
+        ),
+        Entry(
+            "KensingtonMetropark",
+            R.drawable.kensington_metro_park,
+            R.string.kensington_metropark
+        ),
+        Entry(
+            "MayburyPark",
+            R.drawable.maybury_park,
+            R.string.maybury_park
+        ),
+        Entry(
+            "SomersetCollection",
             R.drawable.somerset_collection,
             R.string.somerset_collection
         )
@@ -150,82 +176,100 @@ object Recommendations {
 
     val recommendationsDetroit = listOf<Entry>(
         Entry(
+            "BelleIslePark",
             R.drawable.belle_isle_park,
             R.string.belle_isle_park
         ),
         Entry(
+            "DetroitInstituteOfArts",
             R.drawable.detroit_institute_of_arts,
             R.string.detroit_institute_of_arts
         ),
         Entry(
+            "DetroitRiverfront",
             R.drawable.detroit_riverfront,
             R.string.detroit_riverfront
         ),
         Entry(
+            "EasternMarket",
+            R.drawable.eastern_market,
+            R.string.eastern_market
+        ),
+        Entry(
+            "MotownMuseum",
             R.drawable.motown_museum,
             R.string.motown_museum
         ),
         Entry(
+            "TheGuardianBuilding",
             R.drawable.the_guardian_building,
             R.string.the_guardian_building
-        ),
-        Entry(
-            R.drawable.eastern_market,
-            R.string.eastern_market
         )
     )
 
     val recommendationsAnnArbor = listOf<Entry>(
         Entry(
+            "AnnArborHandsOnMuseum",
             R.drawable.ann_arbor_hands_on_museum,
             R.string.ann_arbor_hands_on_museum
         ),
         Entry(
-            R.drawable.university_of_michigan,
-            R.string.university_of_michigan
+            "HudsonMillsMetropark",
+            R.drawable.hudson_mills_metropark,
+            R.string.hudson_mills_metropark
         ),
         Entry(
-            R.drawable.michigan_theater,
-            R.string.michigan_theater
-        ),
-        Entry(
-            R.drawable.main_street,
-            R.string.main_street
-        ),
-        Entry(
+            "Kerrytown",
             R.drawable.kerrytown,
             R.string.kerrytown
         ),
         Entry(
-            R.drawable.hudson_mills_metropark,
-            R.string.hudson_mills_metropark
+            "MainStreet",
+            R.drawable.main_street,
+            R.string.main_street
+        ),
+        Entry(
+            "MichiganTheater",
+            R.drawable.michigan_theater,
+            R.string.michigan_theater
+        ),
+        Entry(
+            "UniversityOfMichigan",
+            R.drawable.university_of_michigan,
+            R.string.university_of_michigan
         )
     )
 
     val recommendationsMichiganVacations = listOf<Entry>(
         Entry(
-            R.drawable.mackinac_island,
-            R.string.mackinac_island
-        ),
-        Entry(
+            "Holland",
             R.drawable.holland,
             R.string.holland
         ),
         Entry(
-            R.drawable.traverse_city,
-            R.string.traverse_city
+            "IsleRoyaleNationalPark",
+            R.drawable.isle_royale_national_park,
+            R.string.isle_royale_national_park
         ),
         Entry(
-            R.drawable.munising,
-            R.string.munising
+            "MackinacIsland",
+            R.drawable.mackinac_island,
+            R.string.mackinac_island
         ),
         Entry(
+            "Marquette",
             R.drawable.marquette,
             R.string.marquette
         ),
         Entry(
-            R.drawable.isle_royale_national_park,
-            R.string.isle_royale_national_park
+            "Munising",
+            R.drawable.munising,
+            R.string.munising
+        ),
+        Entry(
+            "TraverseCity",
+            R.drawable.traverse_city,
+            R.string.traverse_city
         )
     )
 }
