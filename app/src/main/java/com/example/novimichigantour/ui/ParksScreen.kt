@@ -2,10 +2,23 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Recommendations.recommendationsParks
+import com.example.novimichigantour.data.SelectionType
+import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
-fun ParksScreen(onCardClicked: () -> Unit) {
-    BaseScreen(collection = recommendationsParks, onCardClicked)
+fun ParksScreen(
+    onCardClicked: () -> Unit,
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: (SelectionType) -> Unit
+) {
+    BaseScreen(
+        collection = recommendationsParks,
+        onCardClicked = onCardClicked,
+        navigationType = navigationType,
+        noviUiState = noviUiState,
+        onTabPressed = onTabPressed
+    )
 }
 
 @Composable

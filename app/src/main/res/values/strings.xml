@@ -3,6 +3,13 @@
     <string name="back_button">Back</string>
     <string name="placeholder_text">Placeholder text</string>
 
+
+    <string name="home">Home</string>
+    <string name="tour">Tour</string>
+    <string name="saved">Saved</string>
+    <string name="map">Map</string>
+    <string name="extras">Extras</string>
+
     //Categories
     <string name="parks">Parks</string>
     <string name="shopping">Shopping</string>
