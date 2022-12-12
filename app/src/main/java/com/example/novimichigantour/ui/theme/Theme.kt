@@ -12,7 +12,6 @@ private val DarkColorPalette = darkColors(
     surface = md_theme_dark_surface,
     background = md_theme_dark_background,
     onPrimary = md_theme_dark_onPrimary,
-    onSurface = md_theme_dark_onSurface
 )
 
 private val LightColorPalette = lightColors(
@@ -21,7 +20,7 @@ private val LightColorPalette = lightColors(
     surface = md_theme_light_surface,
     background = md_theme_light_background,
     onPrimary = md_theme_light_onPrimary,
-    onSurface = md_theme_light_onSurface
+
 
     /* Other default colors to override
     background = Color.White,

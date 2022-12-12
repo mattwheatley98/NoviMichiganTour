@@ -151,7 +151,7 @@ fun NoviMichiganTourApp(
                 currentScreenTitle = currentScreen.title,
                 canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = { navController.navigateUp()
-                    viewModel.resetCurrentSelection()}
+                    viewModel.updateCurrentTabSelection(selectionType = SelectionType.Home)}
             )
         }
     ) { innerPadding ->

@@ -1,12 +1,14 @@
 package com.example.novimichigantour.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.NavigationRail
 import androidx.compose.material.NavigationRailItem
 import androidx.compose.material.Text
@@ -147,7 +149,7 @@ fun NoviMichiganTourBottomNavigationBar(
             .fillMaxHeight()
     ) {
         BottomNavigation(
-            backgroundColor = Color.White,
+
         ) {
             for (navItem in navigationItemContentList) {
                 NavigationBarItem(
@@ -200,12 +202,13 @@ fun NoviMichiganTourNavigationDrawer(
     navigationItemContentList: List<NavigationItemContent>
 ) {
     PermanentNavigationDrawer(drawerContent = {
-        PermanentDrawerSheet(modifier = Modifier.width(200.dp)) {
-            Column( //Drawer content
+        PermanentDrawerSheet(
+            modifier = Modifier.width(200.dp)) {
+            Column(
                 modifier = Modifier
                     .wrapContentWidth()
                     .fillMaxHeight()
-                    //.background()
+                    .background(MaterialTheme.colors.background)
                     .padding(12.dp)
             ) {
                 for (navItem in navigationItemContentList) {
@@ -218,7 +221,12 @@ fun NoviMichiganTourNavigationDrawer(
                                 imageVector = navItem.icon,
                                 contentDescription = stringResource(id = navItem.text)
                             )
-                        }
+                        },
+                        colors = NavigationDrawerItemDefaults.colors(
+                            unselectedContainerColor = Color.Transparent,
+                            selectedContainerColor = Color.Gray //Find a better color... use Material Theming too
+
+                        )
                     )
                 }
             }
