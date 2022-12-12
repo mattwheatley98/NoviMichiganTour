@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.novimichigantour.data.SelectionType
+import com.example.novimichigantour.model.Entry
 import com.example.novimichigantour.ui.*
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
@@ -151,7 +152,7 @@ fun NoviMichiganTourApp(
                 currentScreenTitle = currentScreen.title,
                 canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = { navController.navigateUp()
-                    viewModel.updateCurrentTabSelection(selectionType = SelectionType.Home)}
+                    viewModel.resetCurrentSelection()}
             )
         }
     ) { innerPadding ->
@@ -164,7 +165,10 @@ fun NoviMichiganTourApp(
         ) {
             composable(route = NoviMichiganTourScreen.Home.name) {
                 CategoriesScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -185,7 +189,10 @@ fun NoviMichiganTourApp(
             //Parks
             composable(route = NoviMichiganTourScreen.Parks.name) {
                 ParksScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -215,7 +222,10 @@ fun NoviMichiganTourApp(
             //Shopping
             composable(route = NoviMichiganTourScreen.Shopping.name) {
                 ShoppingScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -245,7 +255,10 @@ fun NoviMichiganTourApp(
             //Restaurants
             composable(route = NoviMichiganTourScreen.Restaurants.name) {
                 RestaurantsScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -278,7 +291,10 @@ fun NoviMichiganTourApp(
             //Things To Do
             composable(route = NoviMichiganTourScreen.ThingsToDo.name) {
                 ThingsToDoScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -305,7 +321,10 @@ fun NoviMichiganTourApp(
             //Nearby Attractions
             composable(route = NoviMichiganTourScreen.NearbyAttractions.name) {
                 NearbyAttractionsScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -338,7 +357,10 @@ fun NoviMichiganTourApp(
             //Detroit
             composable(route = NoviMichiganTourScreen.Detroit.name) {
                 DetroitScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -368,7 +390,10 @@ fun NoviMichiganTourApp(
             //Ann Arbor
             composable(route = NoviMichiganTourScreen.AnnArbor.name) {
                 AnnArborScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
@@ -398,7 +423,10 @@ fun NoviMichiganTourApp(
             //Michigan Vacations
             composable(route = NoviMichiganTourScreen.MichiganVacations.name) {
                 MichiganVacationsScreen(
-                    onCardClicked = { navController.navigate(com.example.novimichigantour.ui.route) },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
                     navigationType = navigationType,
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)

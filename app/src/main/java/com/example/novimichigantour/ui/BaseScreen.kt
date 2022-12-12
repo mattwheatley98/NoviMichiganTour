@@ -2,6 +2,7 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -34,7 +36,7 @@ import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 @Composable
 fun BaseScreen(
     collection: List<Entry>,
-    onCardClicked: () -> Unit = {},
+    onCardClicked: ((Entry) -> Unit),
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
     onTabPressed: ((SelectionType) -> Unit),
@@ -93,18 +95,16 @@ fun BaseScreen(
     }
 }
 
-var route = ""
-
 @Composable
 fun EntryRow(
     entry: Entry,
-    onCardClicked: () -> Unit
+    onCardClicked: ((Entry) -> Unit) = {}
 ) {
     Card(
         elevation = 4.dp,
         modifier = Modifier
             .padding(8.dp)
-            .clickable { route = entry.entryRoute; onCardClicked() }) {
+            .clickable { onCardClicked(entry) }) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
@@ -113,17 +113,21 @@ fun EntryRow(
             Image(
                 painter = painterResource(id = entry.image),
                 contentDescription = stringResource(id = entry.text),
+                contentScale = ContentScale.FillBounds,
                 modifier = Modifier
-                    .size(150.dp)
+                    .width(170.dp)
+                    .height(140.dp)
                     .padding(10.dp)
+                    .border(1.dp, MaterialTheme.colors.secondary)
             )
-            Spacer(modifier = Modifier.padding(12.dp))
+            Spacer(modifier = Modifier.padding(6.dp))
             Column(
                 modifier = Modifier
             ) {
                 Text(
                     text = stringResource(id = entry.text),
                     modifier = Modifier
+                        .padding(end = 8.dp)
                 )
             }
         }

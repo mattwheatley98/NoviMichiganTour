@@ -3,11 +3,12 @@ package com.example.novimichigantour.ui
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Categories.categoryData
 import com.example.novimichigantour.data.SelectionType
+import com.example.novimichigantour.model.Entry
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
 fun CategoriesScreen(
-    onCardClicked: () -> Unit,
+    onCardClicked: ((Entry) -> Unit),
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
     onTabPressed: (SelectionType) -> Unit)
