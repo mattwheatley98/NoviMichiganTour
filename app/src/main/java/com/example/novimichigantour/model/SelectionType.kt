@@ -1,4 +1,4 @@
-package com.example.novimichigantour.data
+package com.example.novimichigantour.model
 
 enum class SelectionType {
     Home, Saved, Map, Extras

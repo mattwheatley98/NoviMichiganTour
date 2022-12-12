@@ -13,11 +13,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.NavigationRail
 import androidx.compose.material.NavigationRailItem
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Place
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,9 +23,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.novimichigantour.R
-import com.example.novimichigantour.data.SelectionType
+import com.example.novimichigantour.data.NavigationItemContent.navigationItemContentList
 import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
@@ -53,28 +48,6 @@ fun BaseScreen(
             EntryRow(entry = it, onCardClicked)
         }
     }
-    val navigationItemContentList = listOf(
-        NavigationItemContent(
-            SelectionType.Home,
-            icon = Icons.Default.Home,
-            R.string.home
-        ),
-        NavigationItemContent(
-            SelectionType.Saved,
-            icon = Icons.Default.Favorite,
-            R.string.saved
-        ),
-        NavigationItemContent(
-            SelectionType.Map,
-            icon = Icons.Default.Place,
-            R.string.map
-        ),
-        NavigationItemContent(
-            SelectionType.Extras,
-            icon = Icons.Default.Star,
-            R.string.extras
-        )
-    )
 
     when (navigationType) {
         NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
@@ -98,7 +71,7 @@ fun BaseScreen(
 @Composable
 fun EntryRow(
     entry: Entry,
-    onCardClicked: ((Entry) -> Unit) = {}
+    onCardClicked: ((Entry) -> Unit)
 ) {
     Card(
         elevation = 4.dp,

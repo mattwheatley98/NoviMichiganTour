@@ -2,8 +2,8 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Recommendations.recommendationsParks
-import com.example.novimichigantour.data.SelectionType
 import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
@@ -23,32 +23,86 @@ fun ParksScreen(
 }
 
 @Composable
-fun BoscoFieldsScreen() {
-    RecommendedPlaceScreen(entry = recommendationsParks[0])
+fun BoscoFieldsScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsParks[0],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun FuerstParkScreen() {
-    RecommendedPlaceScreen(entry = recommendationsParks[1])
+fun FuerstParkScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsParks[1],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun ItcCorridorTrailScreen() {
-    RecommendedPlaceScreen(entry = recommendationsParks[2])
+fun ItcCorridorTrailScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsParks[2],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun PavilionShoreParkScreen() {
-    RecommendedPlaceScreen(entry = recommendationsParks[3])
+fun PavilionShoreParkScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsParks[3],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun RotaryParkScreen() {
-    RecommendedPlaceScreen(entry = recommendationsParks[4])
+fun RotaryParkScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsParks[4],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun WildlifeWoodsParkScreen() {
-    RecommendedPlaceScreen(entry = recommendationsParks[5])
+fun WildlifeWoodsParkScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsParks[5],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 

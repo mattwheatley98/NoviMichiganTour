@@ -2,8 +2,8 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Recommendations.recommendationsRestaurants
-import com.example.novimichigantour.data.SelectionType
 import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
@@ -24,36 +24,99 @@ fun RestaurantsScreen(
 }
 
 @Composable
-fun ChoppedOliveScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[0])
+fun ChoppedOliveScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[0],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun FumiScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[1])
+fun FumiScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[1],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun KuraSushiScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[2])
+fun KuraSushiScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[2],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun NagomiJapaneseRestaurantScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[3])
+fun NagomiJapaneseRestaurantScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[3],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun OSushiScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[4])
+fun OSushiScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[4],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun SedonaTaphouseScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[5])
+fun SedonaTaphouseScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[5],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun TheBreakfastClubScreen() {
-    RecommendedPlaceScreen(entry = recommendationsRestaurants[6])
+fun TheBreakfastClubScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsRestaurants[6],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }

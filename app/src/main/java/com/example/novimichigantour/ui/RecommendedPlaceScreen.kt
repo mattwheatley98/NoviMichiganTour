@@ -11,13 +11,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.novimichigantour.data.NavigationItemContent
 import com.example.novimichigantour.model.Entry
-import com.example.novimichigantour.ui.theme.NoviMichiganTourTheme
+import com.example.novimichigantour.model.SelectionType
+import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
-fun RecommendedPlaceScreen(entry: Entry) {
+fun RecommendedPlaceScreen(
+    entry: Entry,
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(1.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -41,13 +47,22 @@ fun RecommendedPlaceScreen(entry: Entry) {
                 .padding(16.dp)
         )
     }
-}
 
-@Preview
-@Composable
-fun RecommendedPlaceScreenPreview() {
-    NoviMichiganTourTheme() {
-        ItcCorridorTrailScreen()
+    when (navigationType) {
+        NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
+            currentTab = noviUiState.currentTabSelection,
+            onTabPressed = onTabPressed,
+            navigationItemContentList = NavigationItemContent.navigationItemContentList
+        )
+        NoviMichiganTourNavigationType.NAVIGATION_RAIL -> NoviMichiganTourNavigationRail(
+            currentTab = noviUiState.currentTabSelection,
+            onTabPressed = onTabPressed,
+            navigationItemContentList = NavigationItemContent.navigationItemContentList
+        )
+        NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> NoviMichiganTourNavigationDrawer(
+            currentTab = noviUiState.currentTabSelection,
+            onTabPressed = onTabPressed,
+            navigationItemContentList = NavigationItemContent.navigationItemContentList
+        )
     }
-
 }

@@ -2,8 +2,8 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Recommendations.recommendationsAnnArbor
-import com.example.novimichigantour.data.SelectionType
 import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
@@ -18,36 +18,91 @@ fun AnnArborScreen(
         onCardClicked = onCardClicked,
         navigationType = navigationType,
         noviUiState = noviUiState,
-        onTabPressed = onTabPressed)
+        onTabPressed = onTabPressed
+    )
 }
 
 @Composable
-fun AnnArborHandsOnMuseumScreen() {
-    RecommendedPlaceScreen(entry = recommendationsAnnArbor[0])
+fun AnnArborHandsOnMuseumScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsAnnArbor[0],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun HudsonMillsMetroparkScreen() {
-    RecommendedPlaceScreen(entry = recommendationsAnnArbor[1])
+fun HudsonMillsMetroparkScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsAnnArbor[1],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun KerrytownScreen() {
-    RecommendedPlaceScreen(entry = recommendationsAnnArbor[2])
+fun KerrytownScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsAnnArbor[2],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun MainStreetScreen() {
-    RecommendedPlaceScreen(entry = recommendationsAnnArbor[3])
+fun MainStreetScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsAnnArbor[3],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun MichiganTheaterScreen() {
-    RecommendedPlaceScreen(entry = recommendationsAnnArbor[4])
+fun MichiganTheaterScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsAnnArbor[4],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun UniversityOfMichiganScreen() {
-    RecommendedPlaceScreen(entry = recommendationsAnnArbor[5])
+fun UniversityOfMichiganScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsAnnArbor[5],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 

@@ -2,8 +2,8 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Recommendations.recommendationsThingsToDo
-import com.example.novimichigantour.data.SelectionType
 import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
@@ -23,27 +23,72 @@ fun ThingsToDoScreen(
 }
 
 @Composable
-fun JapaneseFestivalScreen() {
-    RecommendedPlaceScreen(entry = recommendationsThingsToDo[0])
+fun JapaneseFestivalScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsThingsToDo[0],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun LinksOfNoviScreen() {
-    RecommendedPlaceScreen(entry = recommendationsThingsToDo[1])
+fun LinksOfNoviScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsThingsToDo[1],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun MichiganStateFairScreen() {
-    RecommendedPlaceScreen(entry = recommendationsThingsToDo[2])
+fun MichiganStateFairScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsThingsToDo[2],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun NoviAthleticClubScreen() {
-    RecommendedPlaceScreen(entry = recommendationsThingsToDo[3])
+fun NoviAthleticClubScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsThingsToDo[3],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
 @Composable
-fun SparcArenaScreen() {
-    RecommendedPlaceScreen(entry = recommendationsThingsToDo[4])
+fun SparcArenaScreen(
+    navigationType: NoviMichiganTourNavigationType,
+    noviUiState: NoviUiState,
+    onTabPressed: ((SelectionType) -> Unit)
+) {
+    RecommendedPlaceScreen(
+        entry = recommendationsThingsToDo[4],
+        navigationType,
+        noviUiState,
+        onTabPressed
+    )
 }
 
