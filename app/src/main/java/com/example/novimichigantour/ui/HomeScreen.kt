@@ -8,7 +8,7 @@ import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
-fun CategoriesScreen(
+fun HomeScreen(
     onCardClicked: ((Entry) -> Unit),
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,

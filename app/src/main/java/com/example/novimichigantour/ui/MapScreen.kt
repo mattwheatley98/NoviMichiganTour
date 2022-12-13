@@ -11,6 +11,9 @@ fun MapScreen(
     noviUiState: NoviUiState,
     onTabPressed: ((SelectionType) -> Unit)
 ) {
+
+
+
     when (navigationType) {
         NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
             currentTab = noviUiState.currentTabSelection,

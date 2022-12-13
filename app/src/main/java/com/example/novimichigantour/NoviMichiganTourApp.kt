@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.novimichigantour.data.Recommendations
 import com.example.novimichigantour.model.Entry
 import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.*
@@ -106,7 +107,10 @@ fun NoviMichiganAppBar(
         title = { Text(text = stringResource(currentScreenTitle)) },
         backgroundColor = MaterialTheme.colors.primary,
         navigationIcon = {
-            if (canNavigateBack) {
+            //Definitely not the best fix, but it'll do for now
+            //Reason why it "does not work" is because you are forced to press the home tab from other tabs which takes you back to the home page
+            //Yeah, this is just a band aid fix... the phone's back button causes the same issue from before
+            if (canNavigateBack && currentScreenTitle != R.string.saved && currentScreenTitle != R.string.map && currentScreenTitle != R.string.extras && currentScreenTitle != R.string.app_name) {
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
@@ -122,7 +126,6 @@ fun NoviMichiganAppBar(
 fun NoviMichiganTourApp(
     windowSize: WindowWidthSizeClass,
 ) {
-
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = NoviMichiganTourScreen.valueOf(
@@ -134,7 +137,6 @@ fun NoviMichiganTourApp(
     when (windowSize) {
         WindowWidthSizeClass.Compact -> {
             navigationType = NoviMichiganTourNavigationType.BOTTOM_NAVIGATION
-
         }
         WindowWidthSizeClass.Medium -> {
             navigationType = NoviMichiganTourNavigationType.NAVIGATION_RAIL
@@ -168,17 +170,12 @@ fun NoviMichiganTourApp(
             modifier = Modifier.padding(innerPadding)
         ) {
 
-
-            //Ok, this is driving me crazy... this needs to be much more scalable
-            //You need to look into using a For Loop to iterate through each category type
-            //Also, you still need to fix the desync between the Back Stack and the Tab highlighting
             //If you have time, start doing dynamic layouts
 
 
-
-
+            //I could use a for loop for these screens, but each one will have unique features in the future... not touching it yet.
             composable(route = NoviMichiganTourScreen.Home.name) {
-                CategoriesScreen(
+                HomeScreen(
                     onCardClicked = { entry: Entry ->
                         viewModel.updateCurrentCardSelection(entry = entry)
                         navController.navigate(entry.entryRoute)
@@ -236,65 +233,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.BoscoFields.name) {
-                BoscoFieldsScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.FuerstPark.name) {
-                FuerstParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.ItcCorridorTrail.name) {
-                ItcCorridorTrailScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.PavilionShorePark.name) {
-                PavilionShoreParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.RotaryPark.name) {
-                RotaryParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.WildlifeWoodsPark.name) {
-                WildlifeWoodsParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsParks){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Shopping
             composable(route = NoviMichiganTourScreen.Shopping.name) {
@@ -311,65 +261,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.NoviTownCenter.name) {
-                NoviTownCenterScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.OneWorldMarket.name) {
-                OneWorldMarketScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.TwelveMileCrossing.name) {
-                TwelveMileCrossingScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.TwelveOaksMall.name) {
-                TwelveOaksMallScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.WestMarketSquare.name) {
-                WestMarketSquareScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.WestOaksShoppingCenter.name) {
-                WestOaksShoppingCenterScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsShopping){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Restaurants
             composable(route = NoviMichiganTourScreen.Restaurants.name) {
@@ -386,75 +289,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.ChoppedOlive.name) {
-                ChoppedOliveScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.Fumi.name) {
-                FumiScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.KuraSushi.name) {
-                KuraSushiScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.NagomiJapaneseRestaurant.name) {
-                NagomiJapaneseRestaurantScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.OSushi.name) {
-                OSushiScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.SedonaTaphouse.name) {
-                SedonaTaphouseScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.TheBreakfastClub.name) {
-                TheBreakfastClubScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsRestaurants){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Things To Do
             composable(route = NoviMichiganTourScreen.ThingsToDo.name) {
@@ -471,55 +317,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.JapaneseFestival.name) {
-                JapaneseFestivalScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.LinksOfNovi.name) {
-                LinksOfNoviScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.MichiganStateFair.name) {
-                MichiganStateFairScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.NoviAthleticClub.name) {
-                NoviAthleticClubScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.SparcArena.name) {
-                SparcArenaScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsThingsToDo){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Nearby Attractions
             composable(route = NoviMichiganTourScreen.NearbyAttractions.name) {
@@ -536,75 +345,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.DowntownBrighton.name) {
-                DowntownBrightonScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.DowntownNorthville.name) {
-                DowntownNorthvilleScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.DowntownPlymouth.name) {
-                DowntownPlymouthScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.HinesPark.name) {
-                HinesParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.KensingtonMetropark.name) {
-                KensingtonMetroparkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.MayburyPark.name) {
-                MayburyParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.SomersetCollection.name) {
-                SomersetCollectionScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsNearbyAttractions){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Detroit
             composable(route = NoviMichiganTourScreen.Detroit.name) {
@@ -621,65 +373,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.BelleIslePark.name) {
-                BelleIsleParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.DetroitInstituteOfArts.name) {
-                DetroitInstituteOfArtsScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.DetroitRiverfront.name) {
-                DetroitRiverfrontScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.EasternMarket.name) {
-                EasternMarketScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.MotownMuseum.name) {
-                MotownMuseumScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.TheGuardianBuilding.name) {
-                TheGuardianBuildingScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsDetroit){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Ann Arbor
             composable(route = NoviMichiganTourScreen.AnnArbor.name) {
@@ -696,65 +401,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.AnnArborHandsOnMuseum.name) {
-                AnnArborHandsOnMuseumScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.HudsonMillsMetropark.name) {
-                HudsonMillsMetroparkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.Kerrytown.name) {
-                KerrytownScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.MainStreet.name) {
-                MainStreetScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.MichiganTheater.name) {
-                MichiganTheaterScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.UniversityOfMichigan.name) {
-                UniversityOfMichiganScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsAnnArbor){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
             //Michigan Vacations
             composable(route = NoviMichiganTourScreen.MichiganVacations.name) {
@@ -771,65 +429,18 @@ fun NoviMichiganTourApp(
                     noviUiState = noviUiState
                 )
             }
-            composable(route = NoviMichiganTourScreen.Holland.name) {
-                HollandScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.IsleRoyaleNationalPark.name) {
-                IsleRoyaleNationalParkScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.MackinacIsland.name) {
-                MackinacIslandScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.Marquette.name) {
-                MarquetteScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.Munising.name) {
-                MunisingScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
-            }
-            composable(route = NoviMichiganTourScreen.TraverseCity.name) {
-                TraverseCityScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+            for (entry in Recommendations.recommendationsMichiganVacations){
+                composable(route = entry.entryRoute){
+                    RecommendedPlaceScreen(
+                        entry = entry,
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        }
+                    )
+                }
             }
         }
     }
