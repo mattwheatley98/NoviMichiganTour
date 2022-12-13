@@ -39,8 +39,8 @@ fun BaseScreen(
 
     LazyColumn(
         modifier = when (navigationType) {
-            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 60.dp)
-            NoviMichiganTourNavigationType.NAVIGATION_RAIL -> Modifier.padding(start = 60.dp)
+            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 56.dp)
+            NoviMichiganTourNavigationType.NAVIGATION_RAIL -> Modifier.padding(start = 56.dp)
             NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> Modifier.padding(start = 200.dp)
         },
     ) {

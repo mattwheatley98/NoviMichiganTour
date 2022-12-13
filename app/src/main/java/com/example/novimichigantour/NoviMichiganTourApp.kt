@@ -1,6 +1,7 @@
 package com.example.novimichigantour
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -172,8 +173,6 @@ fun NoviMichiganTourApp(
 
             //If you have time, start doing dynamic layouts
 
-
-            //I could use a for loop for these screens, but each one will have unique features in the future... not touching it yet.
             composable(route = NoviMichiganTourScreen.Home.name) {
                 HomeScreen(
                     onCardClicked = { entry: Entry ->
@@ -199,14 +198,25 @@ fun NoviMichiganTourApp(
                 )
             }
             composable(route = NoviMichiganTourScreen.Map.name) {
-                MapScreen(
-                    navigationType = navigationType,
-                    noviUiState = noviUiState,
-                    onTabPressed = { selectionType: SelectionType ->
-                        viewModel.updateCurrentTabSelection(selectionType = selectionType)
-                        navController.navigate(selectionType.toString())
-                    }
-                )
+                Column {
+                    MapScreen(
+                        navigationType = navigationType,
+                        noviUiState = noviUiState,
+                        onTabPressed = { selectionType: SelectionType ->
+                            viewModel.updateCurrentTabSelection(selectionType = selectionType)
+                            navController.navigate(selectionType.toString())
+                        },
+                        resetSelections = {viewModel.resetMapCheckbox()},
+                        parksState = {viewModel.updateParksCheckbox(noviUiState.parksCheckbox)},
+                        shoppingState = {viewModel.updateShoppingCheckbox(noviUiState.shoppingCheckbox)},
+                        restaurantsState = {viewModel.updateRestaurantsCheckbox(noviUiState.restaurantsCheckbox)},
+                        thingsToDoState = {viewModel.updateThingsToDoCheckbox(noviUiState.thingsToDoCheckbox)},
+                        nearbyAttractionsState = {viewModel.updateNearbyAttractionsCheckbox(noviUiState.nearbyAttractionsCheckbox)},
+                        detroitState = {viewModel.updateDetroitCheckbox(noviUiState.detroitCheckbox)},
+                        annArborState = {viewModel.updateAnnArborCheckbox(noviUiState.annArborCheckbox)},
+                        michiganVacationsState = {viewModel.updateMichiganVacationsCheckbox(noviUiState.michiganVacationsCheckbox)}
+                    )
+                }
             }
             composable(route = NoviMichiganTourScreen.Extras.name) {
                 ExtrasScreen(
@@ -218,6 +228,9 @@ fun NoviMichiganTourApp(
                     }
                 )
             }
+
+
+
             //Parks
             composable(route = NoviMichiganTourScreen.Parks.name) {
                 ParksScreen(

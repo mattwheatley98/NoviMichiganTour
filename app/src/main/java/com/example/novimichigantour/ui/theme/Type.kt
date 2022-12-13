@@ -32,7 +32,7 @@ val Typography = Typography(
     caption = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 20.sp
+        fontSize = 12.sp
     )
 
 )

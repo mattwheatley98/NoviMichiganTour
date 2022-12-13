@@ -5,6 +5,7 @@ import com.example.novimichigantour.model.Entry
 
 object Categories {
     val categoryData = listOf<Entry>(
+        //Do not need to use the "description" or "LOCATION?" parameters of the Entry class
         Entry(
             "Parks",
             R.drawable.parks,
