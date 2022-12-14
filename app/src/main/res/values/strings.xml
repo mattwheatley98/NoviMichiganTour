@@ -2,8 +2,13 @@
     <string name="app_name">Novi Michigan Tour</string>
     <string name="back_button">Back</string>
     <string name="placeholder_text">Placeholder text</string>
-    <string name="reset">Reset</string>
+    <string name="clear_list">Clear List</string>
     <string name="save">Save</string>
+    <string name="already_added">Already added!</string>
+    <string name="successfully_added">Successfully added!</string>
+    <string name="successfully_removed">Successfully removed!</string>
+    <string name="saves_appear_here">If you see something that interests you, save it and it will appear here!</string>
+    <string name="remove">Remove</string>
 
 
     <string name="home">Home</string>

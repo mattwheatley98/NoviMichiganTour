@@ -1,5 +1,6 @@
 package com.example.novimichigantour.ui
 
+import com.example.novimichigantour.model.Entry
 import com.example.novimichigantour.model.SelectionType
 
 data class NoviUiState(
@@ -13,4 +14,8 @@ data class NoviUiState(
     val detroitCheckbox: Boolean = false,
     val annArborCheckbox: Boolean = false,
     val michiganVacationsCheckbox: Boolean = false,
+    val savedCheckbox: Boolean = false,
+    val savedRecommendations: MutableList<Entry> = mutableListOf(
+
+    )
 )

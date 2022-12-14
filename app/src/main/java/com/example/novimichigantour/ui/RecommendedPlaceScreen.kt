@@ -1,5 +1,6 @@
 package com.example.novimichigantour.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -25,8 +27,13 @@ fun RecommendedPlaceScreen(
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
     onTabPressed: ((SelectionType) -> Unit),
-    save: (Entry) -> Unit
+    save: (Entry) -> Unit,
+    remove: (Entry) -> Unit
 ) {
+    val context = LocalContext.current
+    val displayToast = { text: Int ->
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+    }
     Column(
         verticalArrangement = Arrangement.spacedBy(1.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -49,8 +56,25 @@ fun RecommendedPlaceScreen(
             modifier = Modifier
                 .padding(16.dp)
         )
-        Button(onClick =  { save(entry) } ) {
-            Text(text = stringResource(R.string.save))
+        Row {
+            Button(onClick = {
+                if (noviUiState.savedRecommendations.contains(entry)) {
+                    displayToast(R.string.already_added)
+                } else {
+                    displayToast(R.string.successfully_added)
+                    save(entry)
+                }
+            }) {
+                Text(text = stringResource(R.string.save))
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            if (noviUiState.savedRecommendations.contains(entry)) {
+                Button(onClick = {
+                    displayToast(R.string.successfully_removed)
+                    remove(entry) }) {
+                    Text(text = stringResource(id = R.string.remove))
+                }
+            }
         }
     }
 

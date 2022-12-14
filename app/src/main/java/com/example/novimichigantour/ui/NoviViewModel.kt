@@ -30,6 +30,18 @@ class NoviViewModel : ViewModel() {
         }
     }
 
+    fun addSavedEntry(entry: Entry){
+        _noviUiState.value.savedRecommendations.add(entry)
+    }
+
+    fun removeSavedEntry(entry: Entry){
+        _noviUiState.value.savedRecommendations.remove(entry)
+    }
+
+    fun resetAllEntries(){
+        _noviUiState.value.savedRecommendations.clear()
+    }
+
     fun updateParksCheckbox(
         currentBoolean: Boolean
     ) {
@@ -110,6 +122,16 @@ class NoviViewModel : ViewModel() {
         }
     }
 
+    fun updateSavedCheckbox(
+        currentBoolean: Boolean
+    ) {
+        _noviUiState.update {
+            it.copy(
+                savedCheckbox =  !currentBoolean
+            )
+        }
+    }
+
     fun resetMapCheckbox() {
         _noviUiState.update {
             it.copy(
@@ -124,5 +146,4 @@ class NoviViewModel : ViewModel() {
             )
         }
     }
-
 }

@@ -1,7 +1,6 @@
 package com.example.novimichigantour.ui
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
 import androidx.compose.material.Checkbox
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -37,7 +36,7 @@ fun MapScreen(
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
     onTabPressed: ((SelectionType) -> Unit),
-    resetSelections: () -> Unit,
+    //resetSelections: () -> Unit, might add this feature back
     parksState: (Boolean) -> Unit,
     shoppingState: (Boolean) -> Unit,
     restaurantsState: (Boolean) -> Unit,
@@ -46,6 +45,7 @@ fun MapScreen(
     detroitState: (Boolean) -> Unit,
     annArborState: (Boolean) -> Unit,
     michiganVacationsState: (Boolean) -> Unit,
+    savedState: (Boolean) -> Unit
 ) {
     Column(
         modifier = when (navigationType) {
@@ -125,11 +125,20 @@ fun MapScreen(
                     visible = noviUiState.michiganVacationsCheckbox
                 )
             }
+
+            for (location in noviUiState.savedRecommendations){
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(id = location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE),
+                    visible = noviUiState.savedCheckbox
+                )
+            }
         }
         Spacer(modifier = Modifier.height(8.dp))
         MapMarkerToggleLayout(
             noviUiState = noviUiState,
-            resetSelections = resetSelections,
+            //resetSelections = resetSelections,
             parksState = parksState,
             shoppingState = shoppingState,
             restaurantsState = restaurantsState,
@@ -137,7 +146,8 @@ fun MapScreen(
             nearbyAttractionsState = nearbyAttractionsState,
             detroitState = detroitState,
             annArborState = annArborState,
-            michiganVacationsState = michiganVacationsState
+            michiganVacationsState = michiganVacationsState,
+            savedState = savedState
         )
     }
     when (navigationType) {
@@ -163,7 +173,7 @@ fun MapScreen(
 
 @Composable
 fun MapMarkerToggleLayout(
-    resetSelections: () -> Unit,
+   // resetSelections: () -> Unit,
     noviUiState: NoviUiState,
     parksState: (Boolean) -> Unit,
     shoppingState: (Boolean) -> Unit,
@@ -173,6 +183,7 @@ fun MapMarkerToggleLayout(
     detroitState: (Boolean) -> Unit,
     annArborState: (Boolean) -> Unit,
     michiganVacationsState: (Boolean) -> Unit,
+    savedState: (Boolean) -> Unit
 ) {
     Row(
         horizontalArrangement = Arrangement.Center,
@@ -226,9 +237,11 @@ fun MapMarkerToggleLayout(
                 onCheckedChange = michiganVacationsState,
                 checked = noviUiState.michiganVacationsCheckbox
             )
-            Button(onClick = { resetSelections() }) {
-                Text(text = stringResource(id = R.string.reset))
-            }
+            MapMarkerCheckbox(
+                text = stringResource(id = R.string.saved),
+                onCheckedChange = savedState,
+                checked = noviUiState.savedCheckbox
+            )
         }
     }
 }
