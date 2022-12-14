@@ -52,82 +52,81 @@ fun MapScreen(
             NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 0.dp)
             NoviMichiganTourNavigationType.NAVIGATION_RAIL -> Modifier.padding(start = 56.dp)
             NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> Modifier.padding(start = 200.dp)
-        }
+        },
     ) {
-        Box() {
-            GoogleMap(
-                modifier = Modifier
-                    .fillMaxHeight(.75f),
-                cameraPositionState = rememberCameraPositionState() {
-                    position = CameraPosition.fromLatLngZoom(noviPositionState, 10f)
-                }
-            ) {
-                for (location in recommendationsParks) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN),
-                        visible = noviUiState.parksCheckbox
-                    )
-                }
-                for (location in recommendationsShopping) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW),
-                        visible = noviUiState.shoppingCheckbox
-                    )
-                }
-                for (location in recommendationsRestaurants) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED),
-                        visible = noviUiState.restaurantsCheckbox
-                    )
-                }
-                for (location in recommendationsThingsToDo) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA),
-                        visible = noviUiState.thingsToDoCheckbox
-                    )
-                }
-                for (location in recommendationsNearbyAttractions) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE),
-                        visible = noviUiState.nearbyAttractionsCheckbox
-                    )
-                }
-                for (location in recommendationsDetroit) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN),
-                        visible = noviUiState.detroitCheckbox
-                    )
-                }
-                for (location in recommendationsAnnArbor) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE),
-                        visible = noviUiState.annArborCheckbox
-                    )
-                }
-                for (location in recommendationsMichiganVacations) {
-                    Marker(
-                        state = MarkerState(location.location),
-                        title = stringResource(location.text),
-                        icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET),
-                        visible = noviUiState.michiganVacationsCheckbox
-                    )
-                }
+        GoogleMap(
+            modifier = Modifier
+                .fillMaxHeight(.70f),
+            cameraPositionState = rememberCameraPositionState() {
+                position = CameraPosition.fromLatLngZoom(noviPositionState, 10f)
+            }
+        ) {
+            for (location in recommendationsParks) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN),
+                    visible = noviUiState.parksCheckbox
+                )
+            }
+            for (location in recommendationsShopping) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW),
+                    visible = noviUiState.shoppingCheckbox
+                )
+            }
+            for (location in recommendationsRestaurants) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED),
+                    visible = noviUiState.restaurantsCheckbox
+                )
+            }
+            for (location in recommendationsThingsToDo) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA),
+                    visible = noviUiState.thingsToDoCheckbox
+                )
+            }
+            for (location in recommendationsNearbyAttractions) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE),
+                    visible = noviUiState.nearbyAttractionsCheckbox
+                )
+            }
+            for (location in recommendationsDetroit) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN),
+                    visible = noviUiState.detroitCheckbox
+                )
+            }
+            for (location in recommendationsAnnArbor) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE),
+                    visible = noviUiState.annArborCheckbox
+                )
+            }
+            for (location in recommendationsMichiganVacations) {
+                Marker(
+                    state = MarkerState(location.location),
+                    title = stringResource(location.text),
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET),
+                    visible = noviUiState.michiganVacationsCheckbox
+                )
             }
         }
+        Spacer(modifier = Modifier.height(8.dp))
         MapMarkerToggleLayout(
             noviUiState = noviUiState,
             resetSelections = resetSelections,
@@ -140,23 +139,23 @@ fun MapScreen(
             annArborState = annArborState,
             michiganVacationsState = michiganVacationsState
         )
-        when (navigationType) {
-            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
-                currentTab = noviUiState.currentTabSelection,
-                onTabPressed = onTabPressed,
-                navigationItemContentList = NavigationItemContent.navigationItemContentList
-            )
-            NoviMichiganTourNavigationType.NAVIGATION_RAIL -> NoviMichiganTourNavigationRail(
-                currentTab = noviUiState.currentTabSelection,
-                onTabPressed = onTabPressed,
-                navigationItemContentList = NavigationItemContent.navigationItemContentList
-            )
-            NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> NoviMichiganTourNavigationDrawer(
-                currentTab = noviUiState.currentTabSelection,
-                onTabPressed = onTabPressed,
-                navigationItemContentList = NavigationItemContent.navigationItemContentList,
-            )
-        }
+    }
+    when (navigationType) {
+        NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
+            currentTab = noviUiState.currentTabSelection,
+            onTabPressed = onTabPressed,
+            navigationItemContentList = NavigationItemContent.navigationItemContentList
+        )
+        NoviMichiganTourNavigationType.NAVIGATION_RAIL -> NoviMichiganTourNavigationRail(
+            currentTab = noviUiState.currentTabSelection,
+            onTabPressed = onTabPressed,
+            navigationItemContentList = NavigationItemContent.navigationItemContentList
+        )
+        NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> NoviMichiganTourNavigationDrawer(
+            currentTab = noviUiState.currentTabSelection,
+            onTabPressed = onTabPressed,
+            navigationItemContentList = NavigationItemContent.navigationItemContentList,
+        )
     }
 }
 
@@ -177,7 +176,10 @@ fun MapMarkerToggleLayout(
 ) {
     Row(
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxWidth()
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp)
     ) {
         Column() {
             MapMarkerCheckbox(
@@ -230,7 +232,6 @@ fun MapMarkerToggleLayout(
         }
     }
 }
-
 
 //Checklist
 @Composable

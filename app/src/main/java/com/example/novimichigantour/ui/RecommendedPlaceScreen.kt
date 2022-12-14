@@ -2,6 +2,7 @@ package com.example.novimichigantour.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.novimichigantour.R
 import com.example.novimichigantour.data.NavigationItemContent
 import com.example.novimichigantour.model.Entry
 import com.example.novimichigantour.model.SelectionType
@@ -22,7 +24,8 @@ fun RecommendedPlaceScreen(
     entry: Entry,
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
-    onTabPressed: ((SelectionType) -> Unit)
+    onTabPressed: ((SelectionType) -> Unit),
+    save: (Entry) -> Unit
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(1.dp),
@@ -46,6 +49,9 @@ fun RecommendedPlaceScreen(
             modifier = Modifier
                 .padding(16.dp)
         )
+        Button(onClick =  { save(entry) } ) {
+            Text(text = stringResource(R.string.save))
+        }
     }
 
     when (navigationType) {

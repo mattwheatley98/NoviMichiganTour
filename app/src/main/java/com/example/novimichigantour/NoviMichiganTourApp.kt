@@ -1,7 +1,6 @@
 package com.example.novimichigantour
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -18,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.novimichigantour.data.Recommendations
+import com.example.novimichigantour.data.Saved.savedRecommendations
 import com.example.novimichigantour.model.Entry
 import com.example.novimichigantour.model.SelectionType
 import com.example.novimichigantour.ui.*
@@ -194,11 +194,15 @@ fun NoviMichiganTourApp(
                     onTabPressed = { selectionType: SelectionType ->
                         viewModel.updateCurrentTabSelection(selectionType = selectionType)
                         navController.navigate(selectionType.toString())
-                    }
+                    },
+                    onCardClicked = { entry: Entry ->
+                        viewModel.updateCurrentCardSelection(entry = entry)
+                        navController.navigate(entry.entryRoute)
+                    },
+                    saved = savedRecommendations
                 )
             }
             composable(route = NoviMichiganTourScreen.Map.name) {
-                Column {
                     MapScreen(
                         navigationType = navigationType,
                         noviUiState = noviUiState,
@@ -216,7 +220,6 @@ fun NoviMichiganTourApp(
                         annArborState = {viewModel.updateAnnArborCheckbox(noviUiState.annArborCheckbox)},
                         michiganVacationsState = {viewModel.updateMichiganVacationsCheckbox(noviUiState.michiganVacationsCheckbox)}
                     )
-                }
             }
             composable(route = NoviMichiganTourScreen.Extras.name) {
                 ExtrasScreen(
@@ -255,6 +258,9 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
+                        },
+                        save = { entry: Entry ->
+                            savedRecommendations.add(entry)
                         }
                     )
                 }
@@ -283,7 +289,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
@@ -311,7 +318,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
@@ -339,7 +347,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
@@ -367,7 +376,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
@@ -395,7 +405,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
@@ -423,7 +434,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
@@ -451,7 +463,8 @@ fun NoviMichiganTourApp(
                         onTabPressed = { selectionType: SelectionType ->
                             viewModel.updateCurrentTabSelection(selectionType = selectionType)
                             navController.navigate(selectionType.toString())
-                        }
+                        },
+                        save = { }
                     )
                 }
             }
