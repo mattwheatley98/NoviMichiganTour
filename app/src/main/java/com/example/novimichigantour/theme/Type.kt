@@ -1,4 +1,4 @@
-package com.example.novimichigantour.ui.theme
+package com.example.novimichigantour.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
@@ -32,7 +32,7 @@ val Typography = Typography(
     caption = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontSize = 10.sp
     )
 
 )

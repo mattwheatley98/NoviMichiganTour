@@ -1,4 +1,4 @@
-package com.example.novimichigantour.model
+package com.example.novimichigantour.domain.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

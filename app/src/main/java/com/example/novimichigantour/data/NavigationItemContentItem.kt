@@ -4,32 +4,26 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Place
-import androidx.compose.material.icons.filled.Star
 import com.example.novimichigantour.R
-import com.example.novimichigantour.model.SelectionType
-import com.example.novimichigantour.ui.NavigationItemContent
+import com.example.novimichigantour.domain.model.NavigationItem
+import com.example.novimichigantour.domain.model.SelectionType
 
-object NavigationItemContent {
-    val navigationItemContentList = listOf(
-        NavigationItemContent(
+object NavigationItemData {
+    val navigationItemDataList = listOf(
+        NavigationItem(
             SelectionType.Home,
             icon = Icons.Default.Home,
             R.string.home
         ),
-        NavigationItemContent(
+        NavigationItem(
             SelectionType.Saved,
             icon = Icons.Default.Favorite,
             R.string.saved
         ),
-        NavigationItemContent(
+        NavigationItem(
             SelectionType.Map,
             icon = Icons.Default.Place,
             R.string.map
         ),
-        NavigationItemContent(
-            SelectionType.Extras,
-            icon = Icons.Default.Star,
-            R.string.extras
-        )
     )
 }

@@ -1,7 +1,7 @@
-package com.example.novimichigantour.ui
+package com.example.novimichigantour.presentation
 
-import com.example.novimichigantour.model.Entry
-import com.example.novimichigantour.model.SelectionType
+import com.example.novimichigantour.domain.model.Entry
+import com.example.novimichigantour.domain.model.SelectionType
 
 data class NoviUiState(
     val currentCardSelection: String = "",

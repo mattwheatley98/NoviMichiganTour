@@ -1,4 +1,4 @@
-package com.example.novimichigantour.ui.theme
+package com.example.novimichigantour.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -9,7 +9,6 @@ val md_theme_light_secondary = Color(0xFF506353)
 val md_theme_light_surface = Color(0xFFfbfdf7)
 val md_theme_light_background = Color(0xFFfbfdf7)
 val md_theme_light_onPrimary = Color(0xFFffffff)
-val md_theme_light_onSurface = Color(0xFF191c19)
 
 //Dark Mode
 
@@ -18,4 +17,3 @@ val md_theme_dark_secondary = Color(0xFFb6ccb8)
 val md_theme_dark_surface = Color(0xFF191c19)
 val md_theme_dark_background = Color(0xFF191c19)
 val md_theme_dark_onPrimary = Color(0xFF00391a)
-val md_theme_dark_onSurface = Color(0xFFe1e3de)

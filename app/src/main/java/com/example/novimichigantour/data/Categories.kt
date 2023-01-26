@@ -1,10 +1,10 @@
 package com.example.novimichigantour.data
 
 import com.example.novimichigantour.R
-import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.domain.model.Entry
 
 object Categories {
-    val categoryData = listOf<Entry>(
+    val categoryData = listOf(
         //Do not need to use the "description" or "LOCATION?" parameters of the Entry class
         Entry(
             "Parks",

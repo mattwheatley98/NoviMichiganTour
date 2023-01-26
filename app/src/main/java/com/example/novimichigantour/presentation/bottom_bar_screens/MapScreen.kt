@@ -1,6 +1,8 @@
-package com.example.novimichigantour.ui
+package com.example.novimichigantour.presentation
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Card
 import androidx.compose.material.Checkbox
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -10,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.novimichigantour.R
-import com.example.novimichigantour.data.NavigationItemContent
 import com.example.novimichigantour.data.Recommendations.recommendationsAnnArbor
 import com.example.novimichigantour.data.Recommendations.recommendationsDetroit
 import com.example.novimichigantour.data.Recommendations.recommendationsMichiganVacations
@@ -19,7 +20,10 @@ import com.example.novimichigantour.data.Recommendations.recommendationsParks
 import com.example.novimichigantour.data.Recommendations.recommendationsRestaurants
 import com.example.novimichigantour.data.Recommendations.recommendationsShopping
 import com.example.novimichigantour.data.Recommendations.recommendationsThingsToDo
-import com.example.novimichigantour.model.SelectionType
+import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
+import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
+import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
@@ -29,14 +33,11 @@ import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
-val noviPositionState = LatLng(42.475556473172155, -83.4875781403792)
-
 @Composable
 fun MapScreen(
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
     onTabPressed: ((SelectionType) -> Unit),
-    //resetSelections: () -> Unit, might add this feature back
     parksState: (Boolean) -> Unit,
     shoppingState: (Boolean) -> Unit,
     restaurantsState: (Boolean) -> Unit,
@@ -49,11 +50,12 @@ fun MapScreen(
 ) {
     Column(
         modifier = when (navigationType) {
-            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 0.dp)
+            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 10.dp)
             NoviMichiganTourNavigationType.NAVIGATION_RAIL -> Modifier.padding(start = 56.dp)
             NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> Modifier.padding(start = 200.dp)
         },
     ) {
+        val noviPositionState = LatLng(42.475556473172155, -83.4875781403792)
         GoogleMap(
             modifier = Modifier
                 .fillMaxHeight(.70f),
@@ -126,7 +128,7 @@ fun MapScreen(
                 )
             }
 
-            for (location in noviUiState.savedRecommendations){
+            for (location in noviUiState.savedRecommendations) {
                 Marker(
                     state = MarkerState(location.location),
                     title = stringResource(id = location.text),
@@ -138,7 +140,6 @@ fun MapScreen(
         Spacer(modifier = Modifier.height(8.dp))
         MapMarkerToggleLayout(
             noviUiState = noviUiState,
-            //resetSelections = resetSelections,
             parksState = parksState,
             shoppingState = shoppingState,
             restaurantsState = restaurantsState,
@@ -154,26 +155,20 @@ fun MapScreen(
         NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
             currentTab = noviUiState.currentTabSelection,
             onTabPressed = onTabPressed,
-            navigationItemContentList = NavigationItemContent.navigationItemContentList
         )
         NoviMichiganTourNavigationType.NAVIGATION_RAIL -> NoviMichiganTourNavigationRail(
             currentTab = noviUiState.currentTabSelection,
             onTabPressed = onTabPressed,
-            navigationItemContentList = NavigationItemContent.navigationItemContentList
         )
         NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> NoviMichiganTourNavigationDrawer(
             currentTab = noviUiState.currentTabSelection,
             onTabPressed = onTabPressed,
-            navigationItemContentList = NavigationItemContent.navigationItemContentList,
         )
     }
 }
 
-//There has to be a better way to do this!
-
 @Composable
 fun MapMarkerToggleLayout(
-   // resetSelections: () -> Unit,
     noviUiState: NoviUiState,
     parksState: (Boolean) -> Unit,
     shoppingState: (Boolean) -> Unit,
@@ -253,14 +248,31 @@ fun MapMarkerCheckbox(
     onCheckedChange: (Boolean) -> Unit,
     checked: Boolean,
 ) {
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+    Card(
+        modifier = Modifier
+            .width(140.dp)
+            .height(50.dp)
+            .padding(3.dp)
+            .clickable { onCheckedChange(checked) },
+        elevation = 4.dp
     ) {
-        Text(
-            style = MaterialTheme.typography.caption,
-            text = text
-        )
-        Checkbox(checked = checked, onCheckedChange = onCheckedChange)
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                style = MaterialTheme.typography.caption,
+                text = text,
+                modifier = Modifier.padding(2.dp)
+            )
+            Spacer(modifier = Modifier.width(3.dp))
+            Checkbox(
+                checked = checked,
+                onCheckedChange = null,
+            )
+        }
+
     }
 }
+

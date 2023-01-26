@@ -8,7 +8,8 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.novimichigantour.ui.theme.NoviMichiganTourTheme
+import com.example.novimichigantour.presentation.NoviMichiganTourApp
+import com.example.novimichigantour.theme.NoviMichiganTourTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)

@@ -1,4 +1,4 @@
-package com.example.novimichigantour.ui
+package com.example.novimichigantour.presentation
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -16,9 +16,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.novimichigantour.R
-import com.example.novimichigantour.data.NavigationItemContent
-import com.example.novimichigantour.model.Entry
-import com.example.novimichigantour.model.SelectionType
+import com.example.novimichigantour.domain.model.Entry
+import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
+import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
+import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
@@ -82,17 +84,14 @@ fun RecommendedPlaceScreen(
         NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
             currentTab = noviUiState.currentTabSelection,
             onTabPressed = onTabPressed,
-            navigationItemContentList = NavigationItemContent.navigationItemContentList
         )
         NoviMichiganTourNavigationType.NAVIGATION_RAIL -> NoviMichiganTourNavigationRail(
             currentTab = noviUiState.currentTabSelection,
             onTabPressed = onTabPressed,
-            navigationItemContentList = NavigationItemContent.navigationItemContentList
         )
         NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> NoviMichiganTourNavigationDrawer(
             currentTab = noviUiState.currentTabSelection,
             onTabPressed = onTabPressed,
-            navigationItemContentList = NavigationItemContent.navigationItemContentList
         )
     }
 }

@@ -1,8 +1,8 @@
-package com.example.novimichigantour.ui
+package com.example.novimichigantour.presentation
 
 import androidx.lifecycle.ViewModel
-import com.example.novimichigantour.model.Entry
-import com.example.novimichigantour.model.SelectionType
+import com.example.novimichigantour.domain.model.Entry
+import com.example.novimichigantour.domain.model.SelectionType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -11,34 +11,25 @@ class NoviViewModel : ViewModel() {
     private val _noviUiState = MutableStateFlow(NoviUiState())
     val noviUiState = _noviUiState.asStateFlow()
 
-
     //Maybe combine these functions to draw from the same collection?
 
     fun updateCurrentCardSelection(entry: Entry) {
-        _noviUiState.update {
-            it.copy(
-                currentCardSelection = entry.entryRoute
-            )
-        }
+        _noviUiState.update { it.copy(currentCardSelection = entry.entryRoute) }
     }
 
     fun updateCurrentTabSelection(selectionType: SelectionType) {
-        _noviUiState.update {
-            it.copy(
-                currentTabSelection = selectionType
-            )
-        }
+        _noviUiState.update { it.copy(currentTabSelection = selectionType) }
     }
 
-    fun addSavedEntry(entry: Entry){
+    fun addSavedEntry(entry: Entry) {
         _noviUiState.value.savedRecommendations.add(entry)
     }
 
-    fun removeSavedEntry(entry: Entry){
+    fun removeSavedEntry(entry: Entry) {
         _noviUiState.value.savedRecommendations.remove(entry)
     }
 
-    fun resetAllEntries(){
+    fun resetAllEntries() {
         _noviUiState.value.savedRecommendations.clear()
     }
 
@@ -57,19 +48,13 @@ class NoviViewModel : ViewModel() {
     ) {
         _noviUiState.update {
             it.copy(
-                shoppingCheckbox =  !currentBoolean
+                shoppingCheckbox = !currentBoolean
             )
         }
     }
 
-    fun updateRestaurantsCheckbox(
-        currentBoolean: Boolean
-    ) {
-        _noviUiState.update {
-            it.copy(
-                restaurantsCheckbox = !currentBoolean
-            )
-        }
+    fun updateRestaurantsCheckbox(currentBoolean: Boolean) {
+        _noviUiState.update { it.copy(restaurantsCheckbox = !currentBoolean) }
     }
 
     fun updateThingsToDoCheckbox(
@@ -97,7 +82,7 @@ class NoviViewModel : ViewModel() {
     ) {
         _noviUiState.update {
             it.copy(
-                detroitCheckbox =  !currentBoolean
+                detroitCheckbox = !currentBoolean
             )
         }
     }
@@ -117,7 +102,7 @@ class NoviViewModel : ViewModel() {
     ) {
         _noviUiState.update {
             it.copy(
-                michiganVacationsCheckbox =  !currentBoolean
+                michiganVacationsCheckbox = !currentBoolean
             )
         }
     }
@@ -127,22 +112,7 @@ class NoviViewModel : ViewModel() {
     ) {
         _noviUiState.update {
             it.copy(
-                savedCheckbox =  !currentBoolean
-            )
-        }
-    }
-
-    fun resetMapCheckbox() {
-        _noviUiState.update {
-            it.copy(
-                parksCheckbox = false,
-                shoppingCheckbox = false,
-                restaurantsCheckbox = false,
-                thingsToDoCheckbox = false,
-                nearbyAttractionsCheckbox = false,
-                detroitCheckbox = false,
-                annArborCheckbox = false,
-                michiganVacationsCheckbox = false,
+                savedCheckbox = !currentBoolean
             )
         }
     }

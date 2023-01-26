@@ -1,11 +1,11 @@
 package com.example.novimichigantour.data
 
 import com.example.novimichigantour.R
-import com.example.novimichigantour.model.Entry
+import com.example.novimichigantour.domain.model.Entry
 import com.google.android.gms.maps.model.LatLng
 
 object Recommendations {
-    val recommendationsParks = listOf<Entry>(
+    val recommendationsParks = listOf(
         Entry(
             "BoscoFields",
             R.drawable.bosco_fields,

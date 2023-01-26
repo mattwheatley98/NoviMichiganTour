@@ -1,4 +1,4 @@
-package com.example.novimichigantour.ui.theme
+package com.example.novimichigantour.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
