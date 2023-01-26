@@ -1,4 +1,4 @@
-# NoviMichiganTour
+# Novi Michigan Tour
 I recently moved to Novi, Michigan and my parents were curious to see what Novi, as well as the surrounding area, has to offer. After completing a battery of courses provided by Google, I figured this would be a great time to show off what I learned. This is the first project I completed that went beyond experimenting with no more than a handful of screens, so there are more architectural discrepancies when compared to my later projects! Please note that this app does NOT use data persistence and the "placeholder" text for each item will remain, as I have already practiced what I wanted to with this app.
 
 This app has three main features that can be found on the navigation bar: 
