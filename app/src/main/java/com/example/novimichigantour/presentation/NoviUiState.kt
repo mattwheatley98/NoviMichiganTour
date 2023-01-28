@@ -1,11 +1,11 @@
 package com.example.novimichigantour.presentation
 
 import com.example.novimichigantour.domain.model.Entry
-import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.utils.SelectionType
 
 data class NoviUiState(
     val currentCardSelection: String = "",
-    val currentTabSelection: SelectionType = SelectionType.Home,
+    var currentTabSelection: SelectionType = SelectionType.Home,
     val parksCheckbox: Boolean = false,
     val shoppingCheckbox: Boolean = false,
     val restaurantsCheckbox: Boolean = false,
@@ -15,7 +15,6 @@ data class NoviUiState(
     val annArborCheckbox: Boolean = false,
     val michiganVacationsCheckbox: Boolean = false,
     val savedCheckbox: Boolean = false,
-    val savedRecommendations: MutableList<Entry> = mutableListOf(
-
-    )
+    val savedRecommendations: MutableList<Entry> = mutableListOf(),
+    var savedRecommendationsStateFlow: List<Entry> = listOf(),
 )

@@ -2,6 +2,7 @@
     <string name="app_name">Novi Michigan Tour</string>
     <string name="back_button">Back</string>
     <string name="placeholder_text">Placeholder text</string>
+    <string name="google_maps_text">Google Maps</string>
     <string name="clear_list">Clear List</string>
     <string name="save">Save</string>
     <string name="already_added">Already added!</string>
@@ -39,7 +40,7 @@
     <string name="rotary_park">Rotary Park</string>
     <string name="rotary_park_desc">Rotary Park</string>
     <string name="bosco_fields">Bosco Fields</string>
-    <string name="bosco_fields_desc">Bosco Fields</string>
+    <string name="bosco_fields_desc">https://www.google.com/maps/place/Bosco+Fields/@42.477885,-83.5196798,17z/data=!3m1!4b1!4m5!3m4!1s0x8824a9aba4a36c57:0xbad46fd710e0b9fe!8m2!3d42.477885!4d-83.5174911</string>
 
     //Shopping
     <string name="twelve_oaks_mall">Twelve Oaks Mall</string>

@@ -1,10 +1,10 @@
-package com.example.novimichigantour.presentation
+package com.example.novimichigantour.presentation.category_screens
 
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Recommendations.recommendationsParks
 import com.example.novimichigantour.domain.model.Entry
-import com.example.novimichigantour.domain.model.SelectionType
-import com.example.novimichigantour.presentation.category_screens.BaseScreen
+import com.example.novimichigantour.presentation.NoviUiState
+import com.example.novimichigantour.presentation.utils.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable

@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.novimichigantour.data.NavigationItemData.navigationItemDataList
-import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.utils.SelectionType
 
 @Composable
 fun NoviMichiganTourBottomNavigationBar(

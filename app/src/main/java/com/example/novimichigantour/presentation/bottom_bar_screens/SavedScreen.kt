@@ -1,4 +1,4 @@
-package com.example.novimichigantour.presentation
+package com.example.novimichigantour.presentation.bottom_bar_screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,14 +11,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.novimichigantour.R
 import com.example.novimichigantour.domain.model.Entry
-import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.NoviUiState
+import com.example.novimichigantour.presentation.NoviViewModel
 import com.example.novimichigantour.presentation.category_screens.EntryRow
 import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
+import com.example.novimichigantour.presentation.utils.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
+
+private object SavedTab {
+    val currentTab = SelectionType.Saved
+}
 
 @Composable
 fun SavedScreen(
@@ -27,10 +34,14 @@ fun SavedScreen(
     navigationType: NoviMichiganTourNavigationType,
     noviUiState: NoviUiState,
     onTabPressed: ((SelectionType) -> Unit),
-    resetCollection: () -> Unit
+    resetCollection: () -> Unit,
+    viewModel: NoviViewModel
 ) {
+    val savedRecommendations = viewModel.savedRecommendations
+
+    viewModel.updateSelectedTab(SavedTab.currentTab)
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = when (navigationType) {
             NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 0.dp)
@@ -40,7 +51,7 @@ fun SavedScreen(
             .fillMaxHeight(.85f),
     ) {
 
-        if (noviUiState.savedRecommendations.isEmpty()) {
+        if (savedRecommendations.isEmpty()) {
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -58,9 +69,11 @@ fun SavedScreen(
                 EntryRow(entry = it, onCardClicked)
             }
         }
-        if (noviUiState.savedRecommendations.isNotEmpty()) {
+        if (savedRecommendations.isNotEmpty()) {
             Button(onClick = { resetCollection() }) {
-                Text(text = stringResource(id = R.string.clear_list))
+                Text(
+                    text = stringResource(R.string.clear_list),
+                    fontSize = 20.sp)
             }
         }
     }

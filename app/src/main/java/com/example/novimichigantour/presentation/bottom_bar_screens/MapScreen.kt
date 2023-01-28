@@ -1,4 +1,4 @@
-package com.example.novimichigantour.presentation
+package com.example.novimichigantour.presentation.bottom_bar_screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -20,10 +20,12 @@ import com.example.novimichigantour.data.Recommendations.recommendationsParks
 import com.example.novimichigantour.data.Recommendations.recommendationsRestaurants
 import com.example.novimichigantour.data.Recommendations.recommendationsShopping
 import com.example.novimichigantour.data.Recommendations.recommendationsThingsToDo
-import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.NoviUiState
+import com.example.novimichigantour.presentation.NoviViewModel
 import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
+import com.example.novimichigantour.presentation.utils.SelectionType
 import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
@@ -32,6 +34,10 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
+
+private object MapTab {
+    val currentTab = SelectionType.Map
+}
 
 @Composable
 fun MapScreen(
@@ -46,11 +52,13 @@ fun MapScreen(
     detroitState: (Boolean) -> Unit,
     annArborState: (Boolean) -> Unit,
     michiganVacationsState: (Boolean) -> Unit,
-    savedState: (Boolean) -> Unit
+    savedState: (Boolean) -> Unit,
+    viewModel: NoviViewModel
 ) {
+    viewModel.updateSelectedTab(MapTab.currentTab)
     Column(
         modifier = when (navigationType) {
-            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 10.dp)
+            NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 0.dp)
             NoviMichiganTourNavigationType.NAVIGATION_RAIL -> Modifier.padding(start = 56.dp)
             NoviMichiganTourNavigationType.PERMANENT_NAVIGATION_DRAWER -> Modifier.padding(start = 200.dp)
         },
@@ -66,7 +74,7 @@ fun MapScreen(
             for (location in recommendationsParks) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN),
                     visible = noviUiState.parksCheckbox
                 )
@@ -74,7 +82,7 @@ fun MapScreen(
             for (location in recommendationsShopping) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW),
                     visible = noviUiState.shoppingCheckbox
                 )
@@ -82,7 +90,7 @@ fun MapScreen(
             for (location in recommendationsRestaurants) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED),
                     visible = noviUiState.restaurantsCheckbox
                 )
@@ -90,7 +98,7 @@ fun MapScreen(
             for (location in recommendationsThingsToDo) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA),
                     visible = noviUiState.thingsToDoCheckbox
                 )
@@ -98,7 +106,7 @@ fun MapScreen(
             for (location in recommendationsNearbyAttractions) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE),
                     visible = noviUiState.nearbyAttractionsCheckbox
                 )
@@ -106,7 +114,7 @@ fun MapScreen(
             for (location in recommendationsDetroit) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN),
                     visible = noviUiState.detroitCheckbox
                 )
@@ -114,7 +122,7 @@ fun MapScreen(
             for (location in recommendationsAnnArbor) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE),
                     visible = noviUiState.annArborCheckbox
                 )
@@ -122,7 +130,7 @@ fun MapScreen(
             for (location in recommendationsMichiganVacations) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(location.text),
+                    title = stringResource(location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET),
                     visible = noviUiState.michiganVacationsCheckbox
                 )
@@ -131,7 +139,7 @@ fun MapScreen(
             for (location in noviUiState.savedRecommendations) {
                 Marker(
                     state = MarkerState(location.location),
-                    title = stringResource(id = location.text),
+                    title = stringResource(id = location.title),
                     icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE),
                     visible = noviUiState.savedCheckbox
                 )

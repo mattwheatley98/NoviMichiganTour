@@ -2,47 +2,48 @@ package com.example.novimichigantour.data
 
 import com.example.novimichigantour.R
 import com.example.novimichigantour.domain.model.Entry
+import com.example.novimichigantour.presentation.utils.NoviMichiganTourScreens
 
 object Categories {
     val categoryData = listOf(
-        //Do not need to use the "description" or "LOCATION?" parameters of the Entry class
+        //Not using the "googleMapsUrl" and "location" parameters of the Entry class
         Entry(
-            "Parks",
+            NoviMichiganTourScreens.Parks.name,
             R.drawable.parks,
-            R.string.parks
+            R.string.parks,
         ),
         Entry(
-            "Shopping",
+            NoviMichiganTourScreens.Shopping.name,
             R.drawable.shopping,
             R.string.shopping
         ),
         Entry(
-            "Restaurants",
+            NoviMichiganTourScreens.Restaurants.name,
             R.drawable.restaurants_big,
             R.string.restaurants
         ),
         Entry(
-            "ThingsToDo",
+            NoviMichiganTourScreens.ThingsToDo.name,
             R.drawable.things_to_do,
             R.string.things_to_do
         ),
         Entry(
-            "NearbyAttractions",
+            NoviMichiganTourScreens.NearbyAttractions.name,
             R.drawable.nearby_attractions,
             R.string.nearby_attractions
         ),
         Entry(
-            "Detroit",
+            NoviMichiganTourScreens.Detroit.name,
             R.drawable.detroit,
             R.string.detroit
         ),
         Entry(
-            "AnnArbor",
+            NoviMichiganTourScreens.AnnArbor.name,
             R.drawable.ann_arbor,
             R.string.ann_arbor
         ),
         Entry(
-            "MichiganVacations",
+            NoviMichiganTourScreens.MichiganVacations.name,
             R.drawable.michigan_vacations,
             R.string.michigan_vacations
 

@@ -6,7 +6,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Place
 import com.example.novimichigantour.R
 import com.example.novimichigantour.domain.model.NavigationItem
-import com.example.novimichigantour.domain.model.SelectionType
+import com.example.novimichigantour.presentation.utils.SelectionType
 
 object NavigationItemData {
     val navigationItemDataList = listOf(
