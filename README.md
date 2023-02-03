@@ -6,8 +6,8 @@ There are three main features that can be found on the navigation bar: A home sc
 ## Demonstrations
 Recommendations Feature  | Home Screenshot
 ------------- | -------------
-<img src="https://user-images.githubusercontent.com/113391095/216476021-e0ad203c-a254-4ca4-ae08-abf1ee8142c3.gif" width = 400 height = 800>  |  <img src="https://user-images.githubusercontent.com/113391095/216476961-177226cd-08a9-48d1-a4ee-8cc85113d52c.png" width = 400 height = 800>
+<img src="https://user-images.githubusercontent.com/113391095/216476021-e0ad203c-a254-4ca4-ae08-abf1ee8142c3.gif" width = 350 height = 700>  |  <img src="https://user-images.githubusercontent.com/113391095/216476961-177226cd-08a9-48d1-a4ee-8cc85113d52c.png" width = 350 height = 700>
 
 Google Maps Recommendation Feature  | Map Screenshot
 ------------- | -------------
-| <img src="https://user-images.githubusercontent.com/113391095/216474419-7bbf529a-8872-4dcd-9267-418ff0792dc9.gif" width = 400 height = 800> | <img src="https://user-images.githubusercontent.com/113391095/216477118-d7f802ca-4704-4ae4-be05-24634e558990.png" width = 400 height = 800>
+| <img src="https://user-images.githubusercontent.com/113391095/216474419-7bbf529a-8872-4dcd-9267-418ff0792dc9.gif" width = 350 height = 700> | <img src="https://user-images.githubusercontent.com/113391095/216477118-d7f802ca-4704-4ae4-be05-24634e558990.png" width = 350 height = 700>
