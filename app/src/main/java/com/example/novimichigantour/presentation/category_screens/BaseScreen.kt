@@ -21,8 +21,8 @@ import com.example.novimichigantour.presentation.NoviUiState
 import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
+import com.example.novimichigantour.presentation.utils.NoviMichiganTourNavigationType
 import com.example.novimichigantour.presentation.utils.SelectionType
-import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
 fun BaseScreen(

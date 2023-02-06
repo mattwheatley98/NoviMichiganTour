@@ -21,6 +21,7 @@ class NoviViewModel : ViewModel() {
     }
 
     fun addSavedEntry(entry: Entry) {
+        _noviUiState.value.savedRecommendations.add(entry)
         _savedRecommendations.add(entry)
     }
 

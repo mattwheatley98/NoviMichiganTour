@@ -1,5 +1,7 @@
 package com.example.novimichigantour.presentation.bottom_bar_screens
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.compose.runtime.Composable
 import com.example.novimichigantour.data.Categories.categoryData
 import com.example.novimichigantour.domain.model.Entry
@@ -9,8 +11,8 @@ import com.example.novimichigantour.presentation.category_screens.BaseScreen
 import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
+import com.example.novimichigantour.presentation.utils.NoviMichiganTourNavigationType
 import com.example.novimichigantour.presentation.utils.SelectionType
-import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 private object HomeTab {
     val currentTab = SelectionType.Home
@@ -24,7 +26,7 @@ fun HomeScreen(
     viewModel: NoviViewModel,
     onTabPressed: (SelectionType) -> Unit)
 {
-    viewModel.updateSelectedTab(HomeTab.currentTab)
+    viewModel.updateSelectedTab(HomeTab.currentTab); Log.d(ContentValues.TAG, "${HomeTab.currentTab}")
     when (navigationType) {
         NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> NoviMichiganTourBottomNavigationBar(
             currentTab = noviUiState.currentTabSelection,

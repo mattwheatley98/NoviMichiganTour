@@ -1,5 +1,7 @@
 package com.example.novimichigantour.presentation.bottom_bar_screens
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -25,8 +27,8 @@ import com.example.novimichigantour.presentation.NoviViewModel
 import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
+import com.example.novimichigantour.presentation.utils.NoviMichiganTourNavigationType
 import com.example.novimichigantour.presentation.utils.SelectionType
-import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -55,7 +57,7 @@ fun MapScreen(
     savedState: (Boolean) -> Unit,
     viewModel: NoviViewModel
 ) {
-    viewModel.updateSelectedTab(MapTab.currentTab)
+    viewModel.updateSelectedTab(MapTab.currentTab); Log.d(ContentValues.TAG, "${MapTab.currentTab}")
     Column(
         modifier = when (navigationType) {
             NoviMichiganTourNavigationType.BOTTOM_NAVIGATION -> Modifier.padding(bottom = 0.dp)

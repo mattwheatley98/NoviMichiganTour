@@ -22,8 +22,8 @@ import com.example.novimichigantour.presentation.bottom_bar_screens.HomeScreen
 import com.example.novimichigantour.presentation.bottom_bar_screens.MapScreen
 import com.example.novimichigantour.presentation.bottom_bar_screens.SavedScreen
 import com.example.novimichigantour.presentation.category_screens.*
+import com.example.novimichigantour.presentation.utils.NoviMichiganTourNavigationType
 import com.example.novimichigantour.presentation.utils.NoviMichiganTourScreens
-import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 @Composable
 fun NoviMichiganAppBar(

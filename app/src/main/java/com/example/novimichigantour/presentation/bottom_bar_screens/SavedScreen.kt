@@ -1,5 +1,7 @@
 package com.example.novimichigantour.presentation.bottom_bar_screens
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,8 +22,8 @@ import com.example.novimichigantour.presentation.category_screens.EntryRow
 import com.example.novimichigantour.presentation.common.NoviMichiganTourBottomNavigationBar
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationDrawer
 import com.example.novimichigantour.presentation.common.NoviMichiganTourNavigationRail
+import com.example.novimichigantour.presentation.utils.NoviMichiganTourNavigationType
 import com.example.novimichigantour.presentation.utils.SelectionType
-import com.example.novimichigantour.ui.utils.NoviMichiganTourNavigationType
 
 private object SavedTab {
     val currentTab = SelectionType.Saved
@@ -39,7 +41,7 @@ fun SavedScreen(
 ) {
     val savedRecommendations = viewModel.savedRecommendations
 
-    viewModel.updateSelectedTab(SavedTab.currentTab)
+    viewModel.updateSelectedTab(SavedTab.currentTab); Log.d(ContentValues.TAG, "${SavedTab.currentTab}")
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
